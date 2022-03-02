@@ -1,56 +1,137 @@
-// $ = jQuery's way of naming its stuff.
-// $( ... ) = what's inside () is the "object" we are messin with
-// .ready() = method of $jQ
-// .ready( ... ) = argument/parameter passed to that method
-// function(){} in the method is an IIFE = Immediately Invoked F/n Expresson
-$(document).ready(function(){ 
-  //alert("page is ready");
-  console.log("doc is ready");
+import config from "./config.js";
 
-let wowCount = 0;
-let wowMsg;
+// Global variables
+const animationDuration = 500;
+let menuOpened = false;
 
+// Functions
+const headerFading = () => {
+  if (menuOpened) return (header.style.animation = "colorFadeIn 1s forwards");
 
-$( "#dogeDiv" ).draggable(
+  if (document.querySelector("html").scrollTop > 0)
+    return (header.style.animation = "colorFadeIn 1s forwards");
 
-  {
-    containment: "#dogeHouse", 
-    scroll:false,
-    start: function() {   //start
-      wowCount++;
-      console.log("we're starting.", "this is wowCount", wowCount);
+  return (header.style.animation = "colorFadeOut 1s forwards");
+};
 
-    if (wowCount <= 5){
-      wowMsg = "slight wow. ";
+const smoothScroll = (cssSelector) => {
+  const destination = $(cssSelector);
+  const scrollPosition =
+    destination.offset().top - destination.offset().top * 0.05;
+
+  $("html").animate(
+    {
+      scrollTop: scrollPosition,
+    },
+    animationDuration
+  );
+};
+
+const toggleMenu = () => {
+  if (!menuOpened) {
+    menuOpened = !menuOpened;
+    headerFading();
+
+    $("#burger-icon").fadeOut(animationDuration);
+    $("#dropdown-menu").fadeIn(animationDuration);
+    setTimeout(() => {
+      $("#close-icon").fadeIn(animationDuration);
+    }, animationDuration);
+  } else {
+    menuOpened = !menuOpened;
+    headerFading();
+
+    $("#close-icon").fadeOut(animationDuration);
+    $("#dropdown-menu").fadeOut(animationDuration);
+    setTimeout(() => {
+      $("#burger-icon").fadeIn(animationDuration);
+    }, animationDuration);
+  }
+};
+
+const addToDom = (domCssSelector, array) => {
+  if (typeof domCssSelector !== "string" || array.length === 0)
+    return $(domCssSelector).remove();
+
+  const htmlElementString = (domCssSelector, item) => {
+    switch (domCssSelector) {
+      case "#skills-container":
+        return `<div class="skills-flex">
+    ${item.icon}
+    <p class="paragraph">${item.name}</p>
+  </div>`;
+
+      case ".project-cards-container":
+        return `<div class="project-cards">
+        <div class="flex-container">
+          <p class="project-cards-title paragraph">${item.title}</p>
+          <div>
+            <a
+              class="links"
+              target="_blank"
+              rel="noopener noreferrer"
+              href=${item.liveURL}
+              ><p class="paragraph">View live</p></a
+            >
+            <a
+              class="links"
+              target="_blank"
+              rel="noopener noreferrer"
+              href=${item.srcCodeURL}
+              ><p class="paragraph">View source</p></a
+            >
+          </div>
+        </div>
+      </div>`;
+
+      case "#contacts-container":
+        return `<p><a class="links" href=${
+          item.type ? `mailto:${item.text}` : item.text
+        }>kingram2@una.edu</a></p>`;
+
+      case ".social-icons-container":
+        return `<a
+        class="links"
+        target="_blank"
+        rel="noopener noreferrer"
+        href=${item.link}
+        >${item.icon}</a>`;
     }
-    else if(wowCount <=10){
-      wowMsg = "halfwow there. ";
-    }
-    else{
-      wowMsg = "too much wow.";
-    }
-  
+  };
 
-      $("#wowOutput").text(wowMsg +"you has " + wowCount +  " wow");
-    
-    }//start
-});
+  return array.forEach((item) => {
+    $(domCssSelector).append(htmlElementString(domCssSelector, item));
+  });
+};
 
+// Select elements
+const header = document.querySelector("header");
 
-$("#dogeDiv").draggable();
+// JS interactions
+window.addEventListener("scroll", headerFading);
 
+$().ready(() => {
+  // Add projects to DOM
+  addToDom("#skills-container", config["skills"]);
+  addToDom(".project-cards-container", config["projects"]);
+  addToDom("#contacts-container", config["contacts"]);
+  addToDom(".social-icons-container", config["socials"]);
 
-  // let userGreeting = "You are enough, ";
-  
-  // $("button").click(function(){
-  //   userGreeting = userGreeting + $("#fname").val() + "...just as you are.";
-    
-  //   $("#greetingOutput").text(userGreeting);
-    
-    
-  //   //console.log($("#fname").val());
+  // nav-links
+  $(".nav-links").on("click", (event) => {
+    const destination = event.currentTarget.attributes.href.nodeValue;
+    smoothScroll(destination);
+    toggleMenu();
+  });
 
+  // dropdown-menu
+  $("#burger-menu").on("click", toggleMenu);
 
-    
-  // });
+  // read-more button
+  $("#read-more").on("click", () => smoothScroll("#introduction"));
+
+  // other-stuff-cards;
+  $(".card-inner").on("click", (event) =>
+    event.currentTarget.classList.toggle("card-flip")
+  );
 });

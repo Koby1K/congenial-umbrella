@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style/global.css" />
+    <link rel="stylesheet" href="style/style.css" />
+    <title>Koby | My Page</title>
+  </head>
+
+  <body>
+    <div class="parallax" id="parallax-hero">
+      <header>
+        <div id="menu">
+          <a class="links" style="text-decoration: none" href="./index.html"
+            ><p>Koby</p></a
+          >
+
+          <nav id="nav-container">
+            <a class="links nav-links" href="#introduction"
+              ><p class="paragraph">Bio</p></a
+            >
+            <a class="links nav-links" href="#skills"
+              ><p class="paragraph">Skills</p></a
+            >
+            <a class="links nav-links" href="#other-stuff"
+              ><p class="paragraph">Hobbies</p></a
+            >
+          </nav>
+
+          <button id="burger-menu">
+            <i id="burger-icon" class="fa-solid fa-bars"></i>
+            <i
+              id="close-icon"
+              class="fa-solid fa-xmark"
+              style="display: none"
+            ></i>
+          </button>
+        </div>
+
+        <div id="dropdown-menu">
+          <nav>
+            <a class="links nav-links" href="#introduction"
+              ><p class="paragraph">Intro</p></a
+            >
+            <a class="links nav-links" href="#skills"
+              ><p class="paragraph">Skills</p></a
+            >
+            <a class="links nav-links" href="#other-stuff"
+              ><p class="paragraph">Others</p></a
+            >
+          </nav>
+        </div>
+      </header>
+
+      <main>
+        <section id="hero-section">
+          <div class="container">
+            <h2 id="hero-title">Hello, Everyone.</h2>
+            <button id="read-more">
+              <span>Welcome to my page</span>
+              <lottie-player
+                src="https://assets3.lottiefiles.com/private_files/lf30_NnBW3K.json"
+                background="transparent"
+                speed="1"
+                style="width: 4rem; margin: 0 auto"
+                loop
+                autoplay
+              ></lottie-player>
+            </button>
+          </div>
+        </section>
+
+        <section class="sections" id="introduction">
+          <div class="container">
+            <h2 class="title">Who am I</h2>
+
+            <div style="display: flex; justify-content: center">
+              <div class="flex-container">
+                <div id="introduction-img-container">
+                  <img src="imgofme/IMG_0173.JPG" alt="Koby Ingram" />
+                </div>
+                <div id="introduction-description-container">
+                  <p class="paragraph" id="introduction-description">
+                    Hello all! I am Koby Ingram from Tuscumbia, Alabama. I'm currently pursuing my
+                    Bachelor's Degree in Computer Information Systems at
+                    University of North Alabama with a minor in cybersecurity. My interests are ethical hacking and cybersecurity
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="parallax" id="parallax-skills"></div>
+
+        <section class="sections" id="skills">
+          <div class="container">
+            <h2 class="title">Skills</h2>
+            <lottie-player
+              src="https://assets3.lottiefiles.com/packages/lf20_M4t9nS.json"
+              background="transparent"
+              speed="1"
+              loop
+              autoplay
+              style="width: 12rem; margin: auto"
+            ></lottie-player>
+            <div
+              id="skills-container"
+              class="flex-container"
+              style="
+                justify-content: space-evenly;
+                align-items: center;
+                margin-top: 4rem;
+              "
+            ></div>
+          </div>
+
+          <div class="container">
+            <p class="title" style="font-size: 1.7rem">My Projects</p>
+            <div class="project-cards-container"></div>
+          </div>
+        </section>
+
+        <div class="parallax" id="parallax-other-stuff"></div>
+
+        <section class="sections" id="other-stuff">
+          <div class="container">
+            <h2 class="title">Other Stuff</h2>
+            <lottie-player
+              src="https://assets10.lottiefiles.com/packages/lf20_cbrbre30.json"
+              background="transparent"
+              speed="1"
+              loop
+              autoplay
+              style="width: 12rem; margin: auto"
+            ></lottie-player>
+
+            <div
+              class="flex-container"
+              style="justify-content: space-evenly; align-items: center"
+            >
+              <div class="other-stuff-card">
+                <div class="card-inner">
+                  <div class="card-front">
+                    <p class="paragraph">Click on the card</p>
+                    <p class="question-mark">?</p>
+                    <p class="paragraph">My favorite sport</p>
+                  </div>
+
+                  <div class="card-back">
+                    <p class="paragraph reveal">Baseball</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="other-stuff-card">
+                <div class="card-inner">
+                  <div class="card-front">
+                    <p class="paragraph">Click on the card</p>
+                    <p class="question-mark">?</p>
+                    <p class="paragraph">Hobbies</p>
+                  </div>
+
+                  <div class="card-back">
+                    <p class="paragraph reveal">Playing video games and reading</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="other-stuff-card">
+                <div class="card-inner">
+                  <div class="card-front">
+                    <p class="paragraph">Click on the card</p>
+                    <p class="question-mark">?</p>
+                    <p class="paragraph">Show i'm binging</p>
+                  </div>
+
+                  <div class="card-back">
+                    <p class="paragraph reveal">Grownish</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <footer>
+      <div id="footer-flex">
+        <p class="title" id="footer-brand">Koby</p>
+
+        <div id="contacts-container" class="footer-container">
+          <p class="footer-title">Contact</p>
+        </div>
+
+        
+        <div class="footer-container">
+          <p class="footer-title">Source code</p>
+          <p>
+            <a
+              class="links"
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://github.com/kobyingram11/congenial-umbrella"
+              >Click here</a
+            >
+          </p>
+        </div>
+
+      <div class="footer-container social-icons-container"></div>
+
+      <p class="paragraph" id="copyright">&copy; 2022 | Koby Ingram</p>
+    </footer>
+
+    <script
+      type="module"
+      src="https://kit.fontawesome.com/27e2db23db.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      type="module"
+      src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"
+    ></script>
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"
+    ></script>
+    <script type="module" src="script/script.js"></script>
+  </body>
+</html>
+
