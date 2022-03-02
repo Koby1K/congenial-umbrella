@@ -20,18 +20,16 @@ export default {
     projects: [
       {
         title: "Kingram Lab Alpha",
-        liveURL: "https://khoiuna.github.io/birthday.github.io/",
-        srcCodeURL: "https://github.com/KhoiUna/birthday.github.io",
+        liveURL: "https://codepen.io/kobyingram11/full/RwLOxXb",
       },
       {
         title: "Kingram Lab Beta",
-        liveURL: "https://cryptodisco.vercel.app/",
-        srcCodeURL: "https://github.com/KhoiUna/cryptodisco-client-vercel",
+        liveURL: "kingram-html-beta-cis-376.zip",
       },
       {
         title: "Kingram Lab Charlie",
-        liveURL: "https://cryptodisco.vercel.app/",
-        srcCodeURL: "https://github.com/KhoiUna/cryptodisco-client-vercel",
+        liveURL: "https://kobyingram11.github.io/scaling-palm-tree/",
+        srcCodeURL: "https://github.com/kobyingram11/scaling-palm-tree",
       },
       {
         title: "Kingram Lab Delta",
